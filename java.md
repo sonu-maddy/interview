@@ -1,599 +1,1834 @@
-```1. Q: What is Java?
-   A: Java is a high-level, object-oriented programming language developed by Sun Microsystems (now owned by Oracle). It is platform-independent due to its JVM (Java Virtual Machine).
+# ✅ 1. OOPS Concepts (Encapsulation, Inheritance, Polymorphism, Abstraction, Association, Coupling)
 
-2. Q: What are the key features of Java?
-   A: Java is platform-independent, object-oriented, secure, robust, multi-threaded, and supports automatic memory management (Garbage Collection).
+## Object-Oriented Programming (OOP) organizes code into objects, which are instances of classes. Key OOP principles include:
 
-3. Q: What is the difference between JDK, JRE, and JVM?
-   A: JDK (Java Development Kit) contains JRE (Java Runtime Environment) and development tools. JRE provides libraries and JVM (Java Virtual Machine) to execute Java programs.
+Encapsulation: Hiding internal state using access modifiers.
 
-4. Q: What is the purpose of the ‘static’ keyword in Java?
-   A: The ‘static’ keyword is used to create class-level members that can be accessed without creating an object of the class.
+Inheritance: Child class inherits properties of parent.
 
-5. Q: What is the difference between ‘==’ and ‘equals()’ in Java?
-   A: ‘==’ compares object references, whereas ‘equals()’ compares object content (if overridden in a class like String).
+Polymorphism: One interface, many implementations.
 
-6. Q: What is the difference between method overloading and method overriding?
-   A: Overloading occurs when multiple methods have the same name but different parameters. Overriding occurs when a subclass provides a specific implementation for a method in its superclass.
+Abstraction: Showing only relevant features.
 
-7. Q: What is a constructor in Java?
-   A: A constructor is a special method that initializes an object. It has the same name as the class and does not return any value.
+Association: Relationship between classes (like "uses-a").
 
-8. Q: What is the difference between an interface and an abstract class?
-   A: An abstract class can have both abstract and concrete methods, while an interface only has abstract methods (until Java 8, where default methods were introduced).
+Coupling: Level of dependency between classes.
 
-9. Q: What is the significance of the ‘final’ keyword?
-   A: ‘final’ can be used for variables (constants), methods (prevent overriding), and classes (prevent inheritance).
-
-10. Q: What is exception handling in Java?
-    A: Exception handling is a mechanism to handle runtime errors using try, catch, finally, throw, and throws keywords.
-
-11. Q: What is the difference between checked and unchecked exceptions?
-    A: Checked exceptions are checked at compile-time (e.g., IOException), whereas unchecked exceptions occur at runtime (e.g., NullPointerException).
-
-12. Q: What is multi-threading in Java?
-    A: Multi-threading allows concurrent execution of two or more threads to maximize CPU utilization.
-
-13. Q: How do you create a thread in Java?
-    A: By extending the Thread class or implementing the Runnable interface.
-
-14. Q: What is synchronization in Java?
-    A: Synchronization prevents multiple threads from accessing a critical section of code simultaneously, ensuring data consistency.
-
-15. Q: What is the difference between HashMap and Hashtable?
-    A: HashMap is not synchronized, while Hashtable is synchronized and thread-safe.
-
-16. Q: What is a lambda expression in Java?
-    A: A lambda expression provides a clear and concise way to represent an anonymous function.
-
-17. Q: What is the difference between ArrayList and LinkedList?
-    A: ArrayList is backed by a dynamic array and provides fast random access, while LinkedList is implemented using a doubly linked list and provides efficient insertion/deletion.
-
-18. Q: What is garbage collection in Java?
-    A: Garbage collection automatically removes unused objects from memory to free up space.
-
-19. Q: What is the difference between stack and heap memory?
-    A: Stack memory stores method calls and local variables, while heap memory stores objects dynamically allocated at runtime.
-
-20. Q: What is a functional interface in Java?
-    A: A functional interface has exactly one abstract method and can be used with lambda expressions.
-
-21. Q: What is the purpose of the ‘transient’ keyword in Java?
-    A: The ‘transient’ keyword prevents a variable from being serialized.
-
-22. Q: What is reflection in Java?
-    A: Reflection allows inspecting and manipulating classes, methods, and fields at runtime.
-
-23. Q: What are design patterns in Java?
-    A: Design patterns are reusable solutions to common software design problems, such as Singleton, Factory, and Observer patterns.
-
-24. Q: What is the difference between deep copy and shallow copy?
-    A: A deep copy creates a new independent object, while a shallow copy only copies references to the original object.
-
-25. Q: What is JDBC?
-    A: JDBC (Java Database Connectivity) is an API that allows Java applications to interact with databases.
-
-26. Q: What is Spring Framework?
-    A: Spring is a lightweight Java framework for building enterprise applications with features like dependency injection and AOP.
-
-27. Q: What is Hibernate?
-    A: Hibernate is an ORM (Object-Relational Mapping) framework that simplifies database interactions in Java.
-
-28. Q: What is a RESTful API in Java?
-    A: A RESTful API is an API that follows REST principles and uses HTTP methods (GET, POST, PUT, DELETE) for communication.
-
-29. Q: What is dependency injection in Java?
-    A: Dependency injection is a design pattern where dependencies are injected into a class instead of being created inside it.
-
-30. Q: What is the difference between SOAP and REST?
-    A: SOAP is a protocol that uses XML for message exchange, while REST is an architectural style that supports multiple formats like JSON.
-
-31. Q: What is an annotation in Java?
-    A: Annotations provide metadata about code and are used for configuration, documentation, and runtime processing.
-
-32. Q: What is serialization in Java?
-    A: Serialization converts an object into a byte stream for storage or transmission.
-
-33. Q: What is the Java Memory Model (JMM)?
-    A: The JMM defines how threads interact through memory and guarantees visibility and ordering of shared variables.
-
-34. Q: What is a daemon thread in Java?
-    A: A daemon thread runs in the background and terminates when all user threads finish execution.
-
-35. Q: What is an Enum in Java?
-    A: An Enum is a special data type used to define collections of constants.
-
-36. Q: What is the difference between String, StringBuffer, and StringBuilder?
-    A: String is immutable, while StringBuffer and StringBuilder are mutable. StringBuilder is faster than StringBuffer as it is not synchronized.
-
-37. Q: What is a Proxy class in Java?
-    A: A Proxy class allows creating dynamic implementations of interfaces at runtime.
-
-38. Q: What is method reference in Java?
-    A: A method reference is a shorthand notation of a lambda expression to refer to an existing method.
-
-39. Q: What is the difference between Comparator and Comparable?
-    A: Comparable is used for natural ordering, whereas Comparator allows custom sorting logic.
-
-40. Q: What is the default scope of a bean in Spring?
-    A: The default scope of a Spring bean is singleton.
-
-41. Q: What is Autowiring in Spring?
-    A: Autowiring automatically injects dependencies into beans using annotations like @Autowired.
-
-42. Q: What is the difference between @Component, @Service, and @Repository?
-    A: @Component is a generic annotation, @Service is for service layer, and @Repository is for DAO layer.
-
-43. Q: What is Lazy Loading in Hibernate?
-    A: Lazy loading delays the loading of objects until they are needed.
-
-44. Q: What is a Microservice?
-    A: A microservice is an independent, loosely coupled service that performs a specific function.
-
-45. Q: What is the role of an API Gateway in Microservices?
-    A: API Gateway manages API requests, authentication, and rate limiting.
-
-46. Q: What is the difference between SOAP Web Services and REST Web Services?
-    A: SOAP uses XML and strict standards, while REST is more flexible and supports multiple data formats.
-
-47. Q: What is the purpose of the ‘volatile’ keyword?
-    A: The ‘volatile’ keyword ensures that a variable's value is always read from main memory.
-
-48. Q: What is the Observer Design Pattern?
-    A: The Observer pattern allows multiple objects to listen for changes in a subject.
-
-49. Q: What is the difference between Executors and Threads in Java?
-    A: Executors manage thread pools, while threads represent individual tasks.
-
-50. Q: How do you handle memory leaks in Java?
-    A: Use proper resource management, avoid circular references, and utilize profiling tools.
+🔸 Example:
 ```
+// Encapsulation
+class Person {
+    private String name;
+    public void setName(String name) { this.name = name; }
+    public String getName() { return name; }
+}
+
+// Inheritance & Polymorphism
+class Animal {
+    void sound() {
+        System.out.println("Animal makes sound");
+    }
+}
+
+class Dog extends Animal {
+    void sound() {
+        System.out.println("Dog barks");
+    }
+}
+
+// Abstraction
+abstract class Shape {
+    abstract void draw();
+}
+
+class Circle extends Shape {
+    void draw() {
+        System.out.println("Drawing Circle");
+    }
+}
+
+public class TestOOP {
+    public static void main(String[] args) {
+        Dog d = new Dog();
+        d.sound(); // Polymorphism
+
+        Shape s = new Circle();
+        s.draw(); // Abstraction
+    }
+}
 ```
-51. What is the difference between ConcurrentHashMap and HashMap?
-HashMap: Not thread-safe, allows one null key and multiple null values.
 
-ConcurrentHashMap: Thread-safe, does not allow null keys or values, and provides better performance in multi-threaded environments.
+## ✅ 2. Access Modifiers
 
-52. What is the difference between CountDownLatch and CyclicBarrier?
-CountDownLatch: A thread waits for other threads to complete their tasks before proceeding.
+🔸 Description:
+Access modifiers define visibility and accessibility of classes, methods, and variables.
 
-CyclicBarrier: A set of threads wait for each other to reach a common barrier point.
+Modifier	Class	Package	Subclass	World
+private	✔	✖	✖	✖
+default	✔	✔	✖	✖
+protected	✔	✔	✔	✖
+public	✔	✔	✔	✔
 
-53. What is the purpose of the CompletableFuture class in Java?
-CompletableFuture is used for asynchronous programming and supports chaining, combining, and handling exceptions in asynchronous tasks.
-
-54. What is the difference between Stream and Collection in Java?
-Collection: A data structure to store and manipulate groups of objects.
-
-Stream: A sequence of elements supporting sequential and parallel aggregate operations.
-
-55. What is the difference between map() and flatMap() in Java Streams?
-map(): Transforms each element of the stream into another object.
-
-flatMap(): Transforms each element into a stream and flattens the resulting streams into a single stream.
-
-56. What is the purpose of the Optional class in Java?
-Optional is used to represent an object that may or may not contain a non-null value, reducing the need for null checks.
-
-57. What is the difference between peek() and forEach() in Java Streams?
-peek(): Used for debugging and intermediate operations.
-
-forEach(): Used for terminal operations to perform an action on each element.
-
-58. What is the difference between parallelStream() and stream().parallel()?
-Both methods enable parallel processing, but parallelStream() is a direct method on collections, while stream().parallel() is a method on the Stream interface.
-
-59. What is the purpose of the Spliterator interface in Java?
-Spliterator is used for traversing and partitioning elements of a source, especially for parallel processing.
-
-60. What is the difference between ReentrantLock and synchronized?
-synchronized: Built-in keyword for thread synchronization.
-
-ReentrantLock: Provides more flexibility, such as try-lock, fairness, and interruptible locks.
-
-61. What is the purpose of the StampedLock class in Java?
-StampedLock is an advanced lock that supports optimistic locking, read/write locks, and improved performance over ReentrantReadWriteLock.
-
-62. What is the difference between ThreadLocal and InheritableThreadLocal?
-ThreadLocal: Provides thread-specific variables.
-
-InheritableThreadLocal: Allows child threads to inherit values from parent threads.
-
-63. What is the purpose of the Phaser class in Java?
-Phaser is a reusable synchronization barrier that allows threads to wait for each other at multiple phases.
-
-64. What is the difference between ForkJoinPool and ExecutorService?
-ExecutorService: A general-purpose thread pool.
-
-ForkJoinPool: Optimized for divide-and-conquer tasks using the fork-join framework.
-
-65. What is the purpose of the VarHandle class in Java?
-VarHandle provides low-level, atomic operations on variables, replacing sun.misc.Unsafe in modern Java.
-
-66. What is the difference between AtomicInteger and volatile int?
-AtomicInteger: Provides atomic operations like increment, decrement, and compare-and-swap.
-
-volatile int: Ensures visibility but does not provide atomicity.
-
-67. What is the purpose of the Flow API in Java?
-The Flow API provides interfaces for implementing reactive streams in Java.
-
-68. What is the difference between Predicate, Consumer, and Supplier in Java?
-Predicate: Represents a boolean-valued function.
-
-Consumer: Represents an operation that accepts a single input and returns no result.
-
-Supplier: Represents a supplier of results.
-
-69. What is the purpose of the MethodHandle class in Java?
-MethodHandle provides a direct, type-safe reference to a method or field, enabling dynamic invocation.
-
-70. What is the difference between ClassLoader and ModuleLayer in Java?
-ClassLoader: Loads classes into the JVM.
-
-ModuleLayer: Manages modules in a modular system (introduced in Java 9).
-
-71. What is the purpose of the ServiceLoader class in Java?
-ServiceLoader is used to load service providers implementing a specific interface.
-
-72. What is the difference between ProcessBuilder and Runtime.exec()?
-Runtime.exec(): Executes a command in a separate process.
-
-ProcessBuilder: Provides more control over process creation and environment.
-
-73. What is the purpose of the Compact Strings feature in Java?
-Compact Strings optimize memory usage by using a byte array instead of a char array for strings containing only Latin-1 characters.
-
-74. What is the difference between String::new and String::valueOf?
-String::new: Creates a new String object.
-
-String::valueOf: Converts an object to its string representation.
-
-75. What is the purpose of the StackWalker class in Java?
-StackWalker provides a way to traverse and filter stack traces efficiently.
-
-76. What is the difference between ByteBuffer and MappedByteBuffer?
-ByteBuffer: A buffer for bytes.
-
-MappedByteBuffer: A direct buffer mapped to a region of a file.
-
-77. What is the purpose of the Varargs feature in Java?
-Varargs allows a method to accept a variable number of arguments of the same type.
-
-78. What is the difference between try-with-resources and finally?
-try-with-resources: Automatically closes resources declared in the try block.
-
-finally: Executes code regardless of whether an exception occurs.
-
-79. What is the purpose of the @SafeVarargs annotation in Java?
-@SafeVarargs suppresses warnings related to heap pollution when using varargs with generic types.
-
-80. What is the difference between Pattern.compile() and String.matches()?
-Pattern.compile(): Compiles a regex pattern for reuse.
-
-String.matches(): Compiles and matches a regex in one step.
-
-81. What is the purpose of the Files class in Java?
-The Files class provides utility methods for file operations, such as reading, writing, and copying.
-
-82. What is the difference between BufferedReader and Scanner?
-BufferedReader: Efficient for reading large text files.
-
-Scanner: Provides parsing capabilities for primitive types and strings.
-
-83. What is the purpose of the NIO.2 API in Java?
-NIO.2 provides improved file I/O operations, including asynchronous file channels and file system APIs.
-
-84. What is the difference between FileChannel and AsynchronousFileChannel?
-FileChannel: Synchronous file operations.
-
-AsynchronousFileChannel: Asynchronous file operations.
-
-85. What is the purpose of the WatchService class in Java?
-WatchService monitors directories for changes, such as file creation, modification, or deletion.
-
-86. What is the difference between JVM, JRE, and JDK?
-JVM: Executes Java bytecode.
-
-JRE: Provides libraries and JVM to run Java applications.
-
-JDK: Includes JRE and development tools for creating Java applications.
-
-87. What is the purpose of the jshell tool in Java?
-jshell is an interactive REPL (Read-Eval-Print Loop) tool for testing Java code snippets.
-
-88. What is the difference between module-info.java and MANIFEST.MF?
-module-info.java: Defines modules in the Java Platform Module System (JPMS).
-
-MANIFEST.MF: Defines metadata for JAR files.
-
-89. What is the purpose of the jlink tool in Java?
-jlink creates custom runtime images by linking modules and their dependencies.
-
-90. What is the difference between javac and java commands?
-javac: Compiles Java source code into bytecode.
-
-java: Executes Java bytecode.
-
-91. What is the purpose of the jmod tool in Java?
-jmod creates JMOD files for packaging modules.
-
-92. What is the difference between JIT and AOT compilation?
-JIT (Just-In-Time): Compiles bytecode to native code at runtime.
-
-AOT (Ahead-Of-Time): Compiles bytecode to native code before execution.
-
-93. What is the purpose of the GraalVM in Java?
-GraalVM is a high-performance runtime that supports multiple languages and provides AOT compilation.
-
-94. What is the difference between G1GC and ZGC?
-G1GC: A garbage collector designed for low-latency applications.
-
-ZGC: A scalable, low-latency garbage collector for large heaps.
-
-95. What is the purpose of the Epsilon garbage collector?
-Epsilon is a no-op garbage collector used for performance testing and short-lived applications.
-
-96. What is the difference between JVM and Docker?
-JVM: Executes Java bytecode.
-
-Docker: A platform for containerizing applications, including JVM-based apps.
-
-97. What is the purpose of the jstat tool in Java?
-jstat monitors JVM statistics, such as garbage collection and memory usage.
-
-98. What is the difference between jmap and jhat?
-jmap: Generates heap dumps.
-
-jhat: Analyzes heap dumps.
-
-99. What is the purpose of the jstack tool in Java?
-jstack generates thread dumps for debugging and analyzing thread states.
-
-100. What is the difference between JMX and JFR?
-JMX (Java Management Extensions): Monitors and manages JVM and application metrics.
-
-JFR (Java Flight Recorder): Records detailed runtime events for performance analysis.
-
+🔸 Example:
 ```
+public class ModifierDemo {
+    private int a = 10;        // only inside this class
+    protected int b = 20;      // accessible in subclass
+    public int c = 30;         // accessible anywhere
+    int d = 40;                // default/package-private
+}
 ```
-101. What is the difference between String, StringBuffer, and StringBuilder? Provide an example.
-Answer:
 
-String: Immutable and thread-safe.
+## ✅ 3. Transient Variable
+🔸 Description:
+transient is used with variables in serialization.
 
-StringBuffer: Mutable and thread-safe.
+When an object is serialized, transient variables are not saved.
 
-StringBuilder: Mutable and not thread-safe.
+Useful for sensitive data like passwords.
 
-Example:
+🔸 Example:
+```
+import java.io.*;
 
-java
-Copy
-String str = "Hello";
-str.concat(" World"); // Creates a new String object
+class User implements Serializable {
+    String name = "Alice";
+    transient String password = "secret123";
+}
 
-StringBuffer buffer = new StringBuffer("Hello");
-buffer.append(" World"); // Modifies the same object
+public class TestTransient {
+    public static void main(String[] args) throws Exception {
+        User user = new User();
 
-StringBuilder builder = new StringBuilder("Hello");
-builder.append(" World"); // Modifies the same object
-102. Write a Java program to reverse a string using recursion.
-Answer:
+        // Serialize
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("user.ser"));
+        out.writeObject(user);
+        out.close();
 
-java
-Copy
-public class ReverseString {
-    public static String reverse(String str) {
-        if (str.isEmpty()) {
-            return str;
+        // Deserialize
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream("user.ser"));
+        User newUser = (User) in.readObject();
+        in.close();
+
+        System.out.println("Name: " + newUser.name);         // Alice
+        System.out.println("Password: " + newUser.password); // null (transient)
+    }
+}
+```
+
+## ✅ 4. Volatile Variable
+🔸 Description:
+The volatile keyword is used in multithreading.
+
+It tells Java not to cache the variable locally and read it from main memory.
+
+Ensures visibility of changes across threads.
+
+🔸 Example:
+```
+class SharedData {
+    volatile boolean flag = false;
+
+    void run() {
+        while (!flag) {
+            // waiting for flag to become true
         }
-        return reverse(str.substring(1)) + str.charAt(0);
+        System.out.println("Flag is true. Thread ends.");
     }
 
     public static void main(String[] args) {
-        System.out.println(reverse("Hello")); // Output: olleH
+        SharedData data = new SharedData();
+
+        new Thread(() -> data.run()).start();
+
+        try {
+            Thread.sleep(1000); // wait before setting flag
+        } catch (InterruptedException e) { }
+
+        data.flag = true; // change visible to other thread
     }
 }
-103. Write a Java program to find the factorial of a number using recursion.
-Answer:
+```
 
-java
-Copy
-public class Factorial {
-    public static int factorial(int n) {
-        if (n == 0 || n == 1) {
-            return 1;
-        }
-        return n * factorial(n - 1);
+## ✅ 5. Atomic Variable
+🔸 Description:
+Used for lock-free, thread-safe operations on single variables.
+
+Classes like AtomicInteger, AtomicBoolean, AtomicLong in java.util.concurrent.atomic.
+
+🔸 Example:
+```
+import java.util.concurrent.atomic.AtomicInteger;
+
+public class AtomicDemo {
+    AtomicInteger count = new AtomicInteger(0);
+
+    void increment() {
+        count.incrementAndGet(); // atomic operation
     }
 
     public static void main(String[] args) {
-        System.out.println(factorial(5)); // Output: 120
+        AtomicDemo demo = new AtomicDemo();
+        demo.increment();
+        demo.increment();
+        System.out.println(demo.count); // Output: 2
     }
 }
-104. Write a Java program to check if a number is prime.
-Answer:
+```
 
-java
-Copy
-public class PrimeNumber {
-    public static boolean isPrime(int n) {
-        if (n <= 1) return false;
-        for (int i = 2; i <= Math.sqrt(n); i++) {
-            if (n % i == 0) return false;
-        }
-        return true;
+## ✅ 6. final, finally
+🔸 Description:
+final: Used to declare constants, prevent method overriding or inheritance.
+
+finally: A block that always executes after try-catch (used for cleanup).
+
+finalize(): Method called by garbage collector before destroying an object (Deprecated in Java 9+).
+
+🔸 Example:
+```
+public class FinalDemo {
+    final int x = 10; // cannot be changed
+
+    final void show() {
+        System.out.println("This method cannot be overridden");
     }
 
     public static void main(String[] args) {
-        System.out.println(isPrime(29)); // Output: true
-    }
-}
-105. Write a Java program to find the Fibonacci series using recursion.
-Answer:
-
-java
-Copy
-public class Fibonacci {
-    public static int fibonacci(int n) {
-        if (n <= 1) return n;
-        return fibonacci(n - 1) + fibonacci(n - 2);
-    }
-
-    public static void main(String[] args) {
-        for (int i = 0; i < 10; i++) {
-            System.out.print(fibonacci(i) + " "); // Output: 0 1 1 2 3 5 8 13 21 34
+        try {
+            int a = 10 / 0;
+        } catch (ArithmeticException e) {
+            System.out.println("Caught exception");
+        } finally {
+            System.out.println("Finally block always executes");
         }
     }
 }
-106. Write a Java program to implement a custom Comparator for sorting.
-Answer:
+```
+### ✅ 7. Immutable Class
+🔸 Description:
+An immutable class is one whose objects cannot be modified after creation.
 
-java
-Copy
-import java.util.*;
+To create:
 
-class Employee {
-    String name;
-    int age;
+Use final class.
 
-    Employee(String name, int age) {
+All fields must be private and final.
+
+No setters.
+
+If returning mutable fields, return a copy.
+
+🔸 Example:
+```
+final class Student {
+    private final String name;
+    private final int age;
+
+    public Student(String name, int age) {
         this.name = name;
         this.age = age;
     }
-}
 
-class AgeComparator implements Comparator<Employee> {
-    public int compare(Employee e1, Employee e2) {
-        return e1.age - e2.age;
+    // Only getters, no setters
+    public String getName() {
+        return name;
+    }
+
+    public int getAge() {
+        return age;
     }
 }
 
-public class Main {
+public class TestImmutable {
     public static void main(String[] args) {
-        List<Employee> employees = Arrays.asList(
-            new Employee("John", 30),
-            new Employee("Alice", 25)
-        );
-        Collections.sort(employees, new AgeComparator());
-        employees.forEach(e -> System.out.println(e.name + " " + e.age));
+        Student s = new Student("Aman", 21);
+        System.out.println(s.getName()); // Aman
     }
 }
-107. Write a Java program to demonstrate the use of Optional.
-Answer:
+```
 
-java
-Copy
-import java.util.Optional;
 
-public class OptionalExample {
-    public static void main(String[] args) {
-        Optional<String> optional = Optional.ofNullable(null);
-        System.out.println(optional.orElse("Default Value")); // Output: Default Value
+## ✅ 8. static and synchronized
+🔸 Description:
+static: Belongs to the class, not instance. Shared across all objects.
+
+synchronized: Ensures only one thread accesses a block/method at a time (thread-safety).
+
+🔸 Example:
+```
+public class SyncStaticDemo {
+    static int count = 0;
+
+    public synchronized static void increment() {
+        count++;
+    }
+
+    public static void main(String[] args) throws InterruptedException {
+        Thread t1 = new Thread(() -> {
+            for(int i = 0; i < 1000; i++) increment();
+        });
+
+        Thread t2 = new Thread(() -> {
+            for(int i = 0; i < 1000; i++) increment();
+        });
+
+        t1.start(); t2.start();
+        t1.join(); t2.join();
+
+        System.out.println("Count: " + count); // 2000
     }
 }
-108. Write a Java program to demonstrate the use of Stream API.
-Answer:
+```
 
-java
-Copy
-import java.util.Arrays;
-import java.util.List;
+## ✅ 9. Ways to Create Object in Java
+🔸 Description:
+Java supports 5 ways to create an object:
 
-public class StreamExample {
-    public static void main(String[] args) {
-        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 5);
-        numbers.stream()
-               .filter(n -> n % 2 == 0)
-               .forEach(System.out::println); // Output: 2 4
+new keyword
+
+Class.forName() + reflection
+
+clone() method
+
+ObjectInputStream (deserialization)
+
+newInstance() (deprecated)
+
+🔸 Example:
+```
+// 1. Using new
+Student s1 = new Student();
+
+// 2. Using Class.forName
+Student s2 = (Student) Class.forName("Student").getDeclaredConstructor().newInstance();
+
+// 3. Using clone()
+Student s3 = (Student) s1.clone();
+
+// 4. Using deserialization
+ObjectInputStream in = new ObjectInputStream(new FileInputStream("file.ser"));
+Student s4 = (Student) in.readObject();
+
+// 5. newInstance (deprecated)
+Student s5 = Student.class.newInstance(); // discouraged in Java 9+
+Make sure class implements Cloneable and Serializable as needed for clone and deserialization.
+```
+
+## ✅ 10. Abstract Class vs Interface
+🔸 Description:
+Feature	Abstract Class	Interface (Java 8+)
+Methods	Abstract + Concrete	Abstract + default/static
+Variables	Can have state	Only public static final
+Inheritance	One abstract class	Multiple interfaces
+Constructor	Yes	No
+
+🔸 Example:
+```
+abstract class Animal {
+    abstract void makeSound();
+    void sleep() {
+        System.out.println("Sleeping...");
     }
 }
-109. Write a Java program to demonstrate the use of flatMap in Streams.
-Answer:
 
-java
-Copy
-import java.util.Arrays;
-import java.util.List;
-import java.util.stream.Collectors;
+interface Flyable {
+    void fly();
+}
 
-public class FlatMapExample {
-    public static void main(String[] args) {
-        List<List<String>> listOfLists = Arrays.asList(
-            Arrays.asList("a", "b"),
-            Arrays.asList("c", "d")
-        );
-        List<String> flatList = listOfLists.stream()
-                                           .flatMap(List::stream)
-                                           .collect(Collectors.toList());
-        System.out.println(flatList); // Output: [a, b, c, d]
+class Bird extends Animal implements Flyable {
+    public void makeSound() {
+        System.out.println("Chirp chirp");
+    }
+    public void fly() {
+        System.out.println("Bird is flying");
     }
 }
-110. Write a Java program to demonstrate the use of CompletableFuture.
-Answer:
+```
 
-java
-Copy
-import java.util.concurrent.CompletableFuture;
 
-public class CompletableFutureExample {
+## ✅ 11. Try with Resources
+🔸 Description:
+Introduced in Java 7 to automatically close resources (like files, sockets, streams).
+
+The object used inside try() must implement the AutoCloseable interface.
+
+No need for a separate finally block to close resources.
+
+🔸 Example:
+```
+import java.io.*;
+public class TryWithResourcesDemo {
     public static void main(String[] args) {
-        CompletableFuture.supplyAsync(() -> "Hello")
-                         .thenApply(s -> s + " World")
-                         .thenAccept(System.out::println); // Output: Hello World
-    }
-}
-111. Write a Java program to demonstrate the use of ThreadLocal.
-Answer:
-
-java
-Copy
-public class ThreadLocalExample {
-    private static ThreadLocal<String> threadLocal = new ThreadLocal<>();
-
-    public static void main(String[] args) {
-        threadLocal.set("Main Thread");
-        System.out.println(threadLocal.get()); // Output: Main Thread
-
-        new Thread(() -> {
-            threadLocal.set("Worker Thread");
-            System.out.println(threadLocal.get()); // Output: Worker Thread
-        }).start();
-    }
-}
-112. Write a Java program to demonstrate the use of ReentrantLock.
-Answer:
-
-java
-Copy
-import java.util.concurrent.locks.ReentrantLock;
-
-public class ReentrantLockExample {
-    private static final ReentrantLock lock = new ReentrantLock();
-
-    public static void main(String[] args) {
-        lock.lock();
-        try {
-            System.out.println("Locked by " + Thread.currentThread().getName());
-        } finally {
-            lock.unlock();
+        // FileReader and BufferedReader implement AutoCloseable
+        try (BufferedReader br = new BufferedReader(new FileReader("input.txt"))) {
+            String line;
+            while ((line = br.readLine()) != null)
+                System.out.println(line);
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 }
-113. Write a Java program to demonstrate the use of AtomicInteger.
-Answer:
+```
+✅ Resource is automatically closed after try block, even if an exception occurs.
 
-java
-Copy
-import java.util.concurrent.atomic.AtomicInteger;
 
-public class AtomicIntegerExample {
-    private static AtomicInteger counter = new AtomicInteger(0);
+## ✅ 12. Design Patterns (Singleton, Prototype, Factory)
+🔸 Description:
+Design Patterns are proven solutions to common software design problems.
 
-    public static void main(String[] args) {
-        System.out.println(counter.incrementAndGet()); // Output: 1
+Common Patterns in Java:
+
+Singleton: Only one object created.
+
+Prototype: Create a clone of an object.
+
+Factory: Create object without exposing instantiation logic.
+
+🔸 Example: Singleton Pattern
+```
+class Singleton {
+    private static Singleton instance;
+
+    private Singleton() {} // private constructor
+
+    public static Singleton getInstance() {
+        if (instance == null)
+            instance = new Singleton();
+        return instance;
     }
 }
 
+public class SingletonTest {
+    public static void main(String[] args) {
+        Singleton s1 = Singleton.getInstance();
+        Singleton s2 = Singleton.getInstance();
+
+        System.out.println(s1 == s2); // true (same object)
+    }
+}
 ```
+
+## ✅ 13. Exception Handling in Java
+🔸 Description:
+Java handles runtime errors using try, catch, finally, and throw.
+
+Types of Exceptions:
+
+Checked: Must be handled (e.g., IOException)
+
+Unchecked: Occurs at runtime (e.g., NullPointerException)
+
+🔸 Example:
+```
+public class ExceptionDemo {
+    public static void main(String[] args) {
+        try {
+            int a = 10 / 0; // ArithmeticException
+        } catch (ArithmeticException e) {
+            System.out.println("Cannot divide by zero");
+        } finally {
+            System.out.println("Finally block always executes");
+        }
+    }
+}
+```
+
+## ✅ 14. Custom Exception
+🔸 Description:
+You can define your own exception by extending Exception or RuntimeException. Useful for business-specific errors.
+
+🔸 Example:
+```
+class AgeInvalidException extends Exception {
+    AgeInvalidException(String msg) {
+        super(msg);
+    }
+}
+
+public class CustomExceptionDemo {
+    static void validateAge(int age) throws AgeInvalidException {
+        if (age < 18)
+            throw new AgeInvalidException("Age must be >= 18");
+    }
+
+    public static void main(String[] args) {
+        try {
+            validateAge(15);
+        } catch (AgeInvalidException e) {
+            System.out.println("Exception caught: " + e.getMessage());
+        }
+    }
+}
+```
+
+## ✅ 15. throw vs throws
+🔸 Description:
+Keyword	Used For
+throw	To explicitly throw an exception
+throws	To declare exceptions in method signature
+
+🔸 Example:
+```
+public class ThrowThrowsDemo {
+    // throws declares the possibility of an exception
+    static void checkAge(int age) throws Exception {
+        if (age < 18)
+            throw new Exception("Not eligible"); // throw an exception
+    }
+
+    public static void main(String[] args) {
+        try {
+            checkAge(16);
+        } catch (Exception e) {
+            System.out.println("Caught: " + e.getMessage());
+        }
+    }
+}
+```
+
+
+## ✅ 16. JVM (Java Virtual Machine)
+🔸 Description:
+JVM is the engine that runs Java bytecode. It translates .class files into machine code and executes them.
+It handles:
+
+Memory allocation
+
+Garbage Collection
+
+Class loading
+
+Thread management
+
+JVM is platform-dependent, but Java code is platform-independent due to the JVM.
+
+🔸 JVM Components:
+Class Loader: Loads .class files
+
+Runtime Memory: Heap, Stack, Method Area
+
+Execution Engine: Executes bytecode
+
+Garbage Collector: Frees memory automatically
+
+🔸 No direct code, but every Java program runs inside the JVM.
+
+
+## ✅ 17. Memory Management in Java
+🔸 Description:
+Java memory is divided into regions, managed by the JVM.
+
+Heap: All objects and instance variables
+
+Stack: Stores method calls and local variables
+
+Method Area: Class metadata, static variables
+
+Garbage Collector: Reclaims memory of unreachable objects
+
+🔸 Example:
+```
+class MemoryDemo {
+    int x = 5;  // stored in heap with object
+
+    public static void main(String[] args) {
+        int y = 10;         // stored in stack
+        MemoryDemo obj = new MemoryDemo(); // obj in heap
+    }
+}
+```
+JVM takes care of allocating and releasing memory — no need for malloc() or free() like in C/C++.
+
+## ✅ 18. Memory Leak
+🔸 Description:
+A memory leak happens when objects are no longer used but still referenced, so GC can’t clean them up.
+Over time, this causes the program to use too much memory and potentially crash.
+
+🔸 Example:
+```
+import java.util.*;
+public class MemoryLeak {
+    public static void main(String[] args) {
+        List<Object> list = new ArrayList<>();
+        while (true) {
+            list.add(new Object()); // never released => memory leak
+        }
+    }
+}
+```
+Fix: Nullify references, remove unused elements, avoid static references holding large objects.
+
+## ✅ 19. Garbage Collection
+🔸 Description:
+Garbage Collection (GC) is the automatic process of reclaiming memory by removing objects that are no longer reachable.
+
+GC in Java is non-deterministic — we can request GC with System.gc(), but JVM may ignore it.
+
+🔸 Example:
+```
+class GCExample {
+    protected void finalize() {
+        System.out.println("Object is garbage collected");
+    }
+
+    public static void main(String[] args) {
+        GCExample obj = new GCExample();
+        obj = null;
+        System.gc(); // Request GC
+    }
+}
+```
+finalize() is deprecated in Java 9+. Use Cleaner or try-with-resources instead.
+
+
+## ✅ 20. How to Create an Immutable Class
+🔸 Description:
+An immutable class cannot be modified after its object is created. Steps:
+
+Declare class as final
+
+Make all fields private final
+
+Initialize fields via constructor
+
+No setters
+
+Return defensive copies for mutable fields
+
+🔸 Example:
+```
+final class Employee {
+    private final String name;
+    private final int id;
+
+    public Employee(String name, int id) {
+        this.name = name;
+        this.id = id;
+    }
+
+    // Getters only
+    public String getName() {
+        return name;
+    }
+
+    public int getId() {
+        return id;
+    }
+}
+
+public class ImmutableTest {
+    public static void main(String[] args) {
+        Employee e = new Employee("John", 101);
+        System.out.println(e.getName()); // John
+    }
+}
+```
+
+
+## ✅ 21. Why String is Immutable in Java
+🔸 Description:
+A String in Java is immutable, meaning once it’s created, it cannot be changed. Instead, any modification creates a new object.
+
+🔸 Why String is immutable:
+Security: Strings used in class loaders, file paths, etc.
+
+Thread Safety: No synchronization needed
+
+String Pooling: Shared objects in heap for memory efficiency
+
+Caching HashCode: Improves performance in collections like HashMap
+
+🔸 Example:
+```
+public class StringImmutable {
+    public static void main(String[] args) {
+        String a = "Hello";
+        String b = a;
+        a = "World";
+
+        System.out.println(b); // Hello (b still points to old object)
+    }
+}
+```
+
+## ✅ 22. SOLID Principles
+🔸 Description:
+SOLID is a set of 5 design principles for object-oriented programming that promote maintainable and scalable code.
+
+Principle	Meaning
+S - Single Responsibility	One class = one responsibility
+O - Open/Closed	Open for extension, closed for modification
+L - Liskov Substitution	Subtypes should be substitutable for base types
+I - Interface Segregation	Use many small interfaces instead of one big one
+D - Dependency Inversion	Depend on abstraction, not on concrete classes
+
+🔸 Example (Single Responsibility Principle - SRP):
+```
+class Invoice {
+    void calculateTotal() {
+        // logic here
+    }
+}
+
+class InvoicePrinter {
+    void print(Invoice invoice) {
+        // logic here
+    }
+}
+```
+✅ Each class handles one job — this is SRP in action.
+
+
+## ✅ 23. Can We Override Static Methods?
+🔸 Description:
+Static methods cannot be overridden, because they belong to the class, not the object.
+
+If a subclass defines a static method with the same name, it hides the parent method (called method hiding).
+
+🔸 Example:
+```
+class Parent {
+    static void show() {
+        System.out.println("Parent static method");
+    }
+}
+
+class Child extends Parent {
+    static void show() {
+        System.out.println("Child static method");
+    }
+}
+
+public class StaticOverrideTest {
+    public static void main(String[] args) {
+        Parent.show(); // Parent static method
+        Child.show();  // Child static method
+    }
+}
+```
+✅ This is method hiding, not true overriding.
+
+
+## ✅ 24. Overloading vs Overriding
+🔸 Description:
+Feature	Overloading	Overriding Class Same class	Subclass Method name Same Same Parameters Different	Same
+Return type	Can be same or different Must be same or covariant Binding Time Compile-time Runtime.
+
+🔸 Example:
+```
+class A {
+    void show(String msg) {
+        System.out.println("Message: " + msg);
+    }
+
+    void show(String msg, int times) { // Overloaded
+        for (int i = 0; i < times; i++)
+            System.out.println(msg);
+    }
+}
+
+class B extends A {
+    @Override
+    void show(String msg) { // Overridden
+        System.out.println("B says: " + msg);
+    }
+}
+```
+
+## ✅ 25. Ways to Create Object in Java
+🔸 Description:
+There are five ways to create objects in Java:
+
+Using new keyword
+
+Using Class.forName() + reflection
+
+Using clone() method
+
+Using ObjectInputStream (deserialization)
+
+Using Constructor.newInstance()
+
+🔸 Example:
+```
+class Person implements Cloneable, Serializable {
+    String name = "John";
+    
+    public Object clone() throws CloneNotSupportedException {
+        return super.clone();
+    }
+}
+
+public class ObjectCreationDemo {
+    public static void main(String[] args) throws Exception {
+        // 1. Using new
+        Person p1 = new Person();
+
+        // 2. Using Class.forName
+        Person p2 = (Person) Class.forName("Person").getDeclaredConstructor().newInstance();
+
+        // 3. Using clone
+        Person p3 = (Person) p1.clone();
+
+        // 4. Using deserialization
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("obj.ser"));
+        out.writeObject(p1);
+        out.close();
+
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream("obj.ser"));
+        Person p4 = (Person) in.readObject();
+        in.close();
+
+        // 5. Using Constructor
+        Constructor<Person> constructor = Person.class.getConstructor();
+        Person p5 = constructor.newInstance();
+    }
+}
+```
+
+
+## ✅ 26. Java is Call by Value
+🔸 Description:
+Java uses call by value for all method calls. This means:
+
+A copy of the variable is passed.
+
+For primitives: actual value is passed.
+
+For objects: copy of the reference is passed (not the object itself).
+
+Changing the object’s internal state works, but reassigning the reference does not affect the original object.
+
+🔸 Example:
+```
+class Demo {
+    int value = 10;
+}
+
+public class CallByValueTest {
+    public static void modify(Demo d) {
+        d.value = 20;         // changes original object's field
+        d = new Demo();       // this new object is local
+        d.value = 30;
+    }
+
+    public static void main(String[] args) {
+        Demo obj = new Demo();
+        modify(obj);
+        System.out.println(obj.value); // Output: 20
+    }
+}
+```
+
+## ✅ 27. ClassLoader in Java
+🔸 Description:
+A ClassLoader is part of JVM that loads .class files. Types:
+
+Bootstrap ClassLoader – loads core Java classes (rt.jar)
+
+Extension ClassLoader – loads from ext folder
+
+System/Application ClassLoader – loads user classes
+
+🔸 Example:
+```
+public class ClassLoaderDemo {
+    public static void main(String[] args) {
+        System.out.println("ClassLoader of this class: " + ClassLoaderDemo.class.getClassLoader());
+        System.out.println("ClassLoader of String class: " + String.class.getClassLoader()); // null => Bootstrap
+    }
+}
+```
+
+
+## ✅ 28. Serialization
+🔸 Description:
+Serialization is the process of converting an object into a byte stream so it can be saved to a file or sent over a network.
+
+Use implements Serializable
+
+Mark unwanted fields with transient
+
+Use ObjectOutputStream and ObjectInputStream
+
+🔸 Example:
+```
+import java.io.*;
+
+class User implements Serializable {
+    String name;
+    transient String password; // not serialized
+    User(String n, String p) {
+        name = n;
+        password = p;
+    }
+}
+
+public class SerializationTest {
+    public static void main(String[] args) throws Exception {
+        User user = new User("John", "1234");
+
+        // Serialization
+        ObjectOutputStream out = new ObjectOutputStream(new FileOutputStream("user.ser"));
+        out.writeObject(user);
+        out.close();
+
+        // Deserialization
+        ObjectInputStream in = new ObjectInputStream(new FileInputStream("user.ser"));
+        User u2 = (User) in.readObject();
+        in.close();
+
+        System.out.println(u2.name);     // John
+        System.out.println(u2.password); // null (because it was transient)
+    }
+}
+```
+
+## ✅ 29. Marker Interface
+🔸 Description:
+A Marker Interface is an interface that has no methods or fields. It provides metadata to JVM or compiler.
+
+Examples: Serializable, Cloneable, Remote
+
+Used as a flag for some special treatment.
+
+🔸 Example:
+```
+interface MyMarker {} // Marker Interface
+
+class DemoClass implements MyMarker {
+    // JVM or framework might use reflection to treat marked classes differently
+}
+```
+✅ Useful when a class must be eligible for certain operations (like serialization).
+
+
+
+## ✅ 30. String Class Methods
+🔸 Description:
+Java’s String class is rich in built-in methods. Some popular ones:
+
+Method	Description
+length()	Returns length of string
+charAt(index)	Returns char at index
+equals()	Checks content equality
+equalsIgnoreCase()	Ignores case in comparison
+substring()	Extracts part of the string
+indexOf()	Finds index of a character or string
+toUpperCase()	Converts to upper case
+split()	Splits string into array
+replace()	Replaces text
+
+🔸 Example:
+```
+public class StringMethods {
+    public static void main(String[] args) {
+        String s = "Hello World";
+        System.out.println(s.length());              // 11
+        System.out.println(s.charAt(4));             // o
+        System.out.println(s.substring(0, 5));       // Hello
+        System.out.println(s.toUpperCase());         // HELLO WORLD
+        System.out.println(s.indexOf("World"));      // 6
+        String[] parts = s.split(" ");
+        System.out.println(parts[1]);                // World
+    }
+}
+```
+
+## ✅ 31. Object Class Methods
+🔸 Description:
+Every class in Java implicitly extends Object, the root of the class hierarchy. It provides several useful methods:
+
+Method	Purpose
+toString()	Returns string representation of object
+equals()	Compares object references or values
+hashCode()	Returns hash code for use in collections
+getClass()	Gets the runtime class
+clone()	Creates a shallow copy (implements Cloneable)
+finalize()	Called by GC before object removal (deprecated)
+
+🔸 Example:
+```
+class Car {
+    String model = "Tesla";
+
+    public String toString() {
+        return "Model: " + model;
+    }
+
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Car)) return false;
+        Car c = (Car) o;
+        return this.model.equals(c.model);
+    }
+}
+
+public class ObjectMethods {
+    public static void main(String[] args) {
+        Car c1 = new Car();
+        Car c2 = new Car();
+        System.out.println(c1.toString());      // Model: Tesla
+        System.out.println(c1.equals(c2));      // true
+        System.out.println(c1.getClass());      // class Car
+    }
+}
+```
+
+## ✅ 32. hashCode() vs equals()
+🔸 Description:
+Method	Purpose
+equals()	Compares objects logically (content)
+hashCode()	Used in hashing, e.g., in HashMap
+
+If you override equals(), you must also override hashCode()
+
+Two equal objects must return the same hashCode()
+
+🔸 Example:
+```
+class Book {
+    int id;
+    String title;
+
+    Book(int id, String title) {
+        this.id = id;
+        this.title = title;
+    }
+
+    public boolean equals(Object o) {
+        Book b = (Book) o;
+        return this.id == b.id && this.title.equals(b.title);
+    }
+
+    public int hashCode() {
+        return id * 31 + title.hashCode();
+    }
+}
+
+public class HashCodeEqualsDemo {
+    public static void main(String[] args) {
+        Book b1 = new Book(1, "Java");
+        Book b2 = new Book(1, "Java");
+
+        System.out.println(b1.equals(b2));       // true
+        System.out.println(b1.hashCode() == b2.hashCode()); // true
+    }
+}
+```
+
+
+## ✅ 33. Generics
+🔸 Description:
+Generics allow type-safe, reusable code. Introduced in Java 5.
+
+Prevents ClassCastException
+
+Adds compile-time type checking
+
+🔸 Example:
+```
+import java.util.*;
+
+public class GenericDemo {
+    public static void main(String[] args) {
+        List<String> list = new ArrayList<>();
+        list.add("Java");
+        list.add("Python");
+        // list.add(10); // compile-time error
+
+        for (String s : list) {
+            System.out.println(s);
+        }
+    }
+}
+```
+🔸 Generic Method:
+```
+public class GenericMethod {
+    public static <T> void printArray(T[] arr) {
+        for (T t : arr) System.out.println(t);
+    }
+
+    public static void main(String[] args) {
+        Integer[] nums = {1, 2, 3};
+        printArray(nums); // Generic method call
+    }
+}
+```
+
+
+## ✅ 34. Enum in Java
+🔸 Description:
+enum is a special data type that holds fixed set of constants.
+
+Can have fields, constructors, and methods.
+
+🔸 Example:
+```
+enum Day {
+    MON, TUE, WED, THU, FRI, SAT, SUN;
+
+    public boolean isWeekend() {
+        return this == SAT || this == SUN;
+    }
+}
+
+public class EnumTest {
+    public static void main(String[] args) {
+        Day today = Day.FRI;
+        System.out.println(today); // FRI
+        System.out.println(today.isWeekend()); // false
+    }
+}
+```
+
+
+## ✅ 35. Inner Class & Anonymous Class
+🔸 Description:
+Inner Class: A class declared inside another class.
+
+Anonymous Class: A class without a name, declared and instantiated in one go — often used with interfaces or abstract classes.
+
+🔸 Example:
+```
+class Outer {
+    private int data = 100;
+
+    class Inner {
+        void show() {
+            System.out.println("Data: " + data);
+        }
+    }
+
+    void anonymousClassExample() {
+        Runnable r = new Runnable() {
+            public void run() {
+                System.out.println("Anonymous class running...");
+            }
+        };
+        r.run();
+    }
+}
+
+public class InnerDemo {
+    public static void main(String[] args) {
+        Outer o = new Outer();
+        Outer.Inner in = o.new Inner();
+        in.show();
+
+        o.anonymousClassExample();
+    }
+}
+```
+
+
+## ✅ 36. Functional Interface
+🔸 Description:
+A functional interface is an interface with only one abstract method. It can have default or static methods.
+Used heavily in Lambda expressions and Streams.
+
+Annotated with @FunctionalInterface (optional but recommended)
+
+🔸 Common Examples:
+Runnable
+
+Callable
+
+Comparator
+
+Function<T,R>, Predicate<T>
+
+🔸 Example:
+```
+@FunctionalInterface
+interface MyFunction {
+    void display(); // Only one abstract method allowed
+}
+
+public class FunctionalInterfaceDemo {
+    public static void main(String[] args) {
+        MyFunction mf = () -> System.out.println("Hello from Lambda!");
+        mf.display();
+    }
+}
+```
+
+
+## ✅ 37. Stream API
+🔸 Description:
+The Stream API (Java 8+) provides a functional-style way to process sequences of data (collections, arrays, etc.).
+
+Lazily executed
+
+Pipeline structure: source → intermediate operations → terminal operation
+
+🔸 Example:
+```
+import java.util.*;
+import java.util.stream.*;
+
+public class StreamExample {
+    public static void main(String[] args) {
+        List<String> names = Arrays.asList("Aman", "Alok", "Ravi", "Ramesh");
+
+        names.stream()
+             .filter(name -> name.startsWith("A"))
+             .map(String::toUpperCase)
+             .forEach(System.out::println); // AMAN, ALOK
+    }
+}
+```
+
+
+## ✅ 38. Intermediate vs Terminal Operations
+🔸 Description:
+Intermediate Operations	Terminal Operations
+Returns another stream	Ends the stream pipeline
+Lazy	Eager (triggers execution)
+Examples: filter(), map(), sorted()	Examples: collect(), forEach(), count()
+
+🔸 Example:
+```
+import java.util.*;
+import java.util.stream.*;
+
+public class StreamOps {
+    public static void main(String[] args) {
+        List<Integer> nums = Arrays.asList(1, 2, 3, 4, 5);
+
+        long count = nums.stream()           // source
+                         .filter(n -> n % 2 == 0) // intermediate
+                         .count();               // terminal
+
+        System.out.println("Even numbers: " + count); // Output: 2
+    }
+}
+```
+
+## ✅ 39. map() vs flatMap()
+🔸 Description:
+map()	flatMap()
+Transforms each element	Flattens nested structure
+Returns Stream<Stream<T>>	Returns Stream<T>
+
+🔸 Example:
+```
+import java.util.*;
+import java.util.stream.*;
+
+public class MapFlatMapDemo {
+    public static void main(String[] args) {
+        List<List<String>> names = Arrays.asList(
+            Arrays.asList("Aman", "Ajay"),
+            Arrays.asList("Ravi", "Ramesh")
+        );
+
+        System.out.println("Using map:");
+        names.stream()
+             .map(list -> list.stream())
+             .forEach(s -> s.forEach(System.out::println)); // Nested loops
+
+        System.out.println("Using flatMap:");
+        names.stream()
+             .flatMap(list -> list.stream())
+             .forEach(System.out::println); // Flattens all into one stream
+    }
+}
+```
+
+## ✅ 40. Stream vs Collection
+🔸 Description:
+Stream	Collection
+Does not store data	Stores elements
+Functional-style operations	Object-oriented access
+Lazy evaluation (unless terminal op)	Eager evaluation
+Cannot be reused (one-time use)	Can be reused
+Added in Java 8 (java.util.stream)	Core API since Java 1.2
+
+🔸 Example:
+```
+List<String> list = Arrays.asList("apple", "banana", "cherry");
+
+// Collection operation
+System.out.println(list.get(1)); // banana
+
+// Stream operation
+list.stream()
+    .filter(f -> f.startsWith("b"))
+    .forEach(System.out::println); // banana
+
+```
+
+
+## ✅ 41. Optional Class in Java
+🔸 Description:
+Optional<T> is a container object used to represent nullable values and avoid NullPointerException.
+
+Introduced in Java 8, it helps handle cases where a value may or may not be present.
+
+🔸 Common Methods:
+isPresent()
+
+ifPresent()
+
+orElse()
+
+orElseGet()
+
+orElseThrow()
+
+🔸 Example:
+```
+import java.util.Optional;
+
+public class OptionalDemo {
+    public static void main(String[] args) {
+        Optional<String> name = Optional.ofNullable(null);
+
+        System.out.println(name.isPresent());           // false
+        System.out.println(name.orElse("Default Name")); // Default Name
+
+        Optional<String> email = Optional.of("hello@xyz.com");
+        email.ifPresent(e -> System.out.println("Email: " + e)); // prints email
+    }
+}
+```
+
+## ✅ 42. Lambda Expression
+🔸 Description:
+A lambda expression is a short block of code which takes in parameters and returns a value.
+Used to implement functional interfaces inline.
+
+Syntax:
+```
+(parameters) -> { expression }
+🔸 Example:
+java
+Copy
+Edit
+@FunctionalInterface
+interface MathOperation {
+    int operate(int a, int b);
+}
+
+public class LambdaDemo {
+    public static void main(String[] args) {
+        MathOperation add = (a, b) -> a + b;
+        MathOperation mul = (a, b) -> a * b;
+
+        System.out.println(add.operate(5, 3)); // 8
+        System.out.println(mul.operate(5, 3)); // 15
+    }
+}
+```
+
+
+## ✅ 43. Method Reference
+🔸 Description:
+A method reference is a shorthand syntax for calling a method via a lambda expression.
+
+Types of Method References:
+
+ClassName::staticMethod
+
+object::instanceMethod
+
+ClassName::instanceMethod
+
+ClassName::new (constructor reference)
+
+🔸 Example:
+```
+import java.util.*;
+
+public class MethodRefDemo {
+    public static void main(String[] args) {
+        List<String> list = Arrays.asList("java", "python", "c++");
+
+        // Using lambda
+        list.forEach(s -> System.out.println(s));
+
+        // Using method reference
+        list.forEach(System.out::println); // cleaner
+    }
+}
+```
+
+
+## ✅ 44. Comparable vs Comparator
+🔸 Description:
+Feature	Comparable	Comparator
+Package	java.lang	java.util
+Interface	compareTo(Object o)	compare(Object o1, Object o2)
+Sorting Logic	In the object itself	Separate class
+Use Case	Natural ordering	Multiple sorting logic (custom)
+
+🔸 Example:
+```
+// Comparable Example
+class Student implements Comparable<Student> {
+    int id;
+    String name;
+
+    Student(int id, String name) {
+        this.id = id; this.name = name;
+    }
+
+    public int compareTo(Student s) {
+        return this.id - s.id;
+    }
+}
+
+// Comparator Example
+class NameComparator implements Comparator<Student> {
+    public int compare(Student a, Student b) {
+        return a.name.compareTo(b.name);
+    }
+}
+
+Collections.sort(list);                    // Uses Comparable
+Collections.sort(list, new NameComparator()); // Uses Comparator
+```
+
+
+## ✅ 45. Functional Interfaces in Java 8
+🔸 Description:
+Java 8 introduced many built-in functional interfaces in the java.util.function package.
+
+Interface	Description
+Function<T,R>	Takes T, returns R
+Predicate<T>	Takes T, returns boolean
+Consumer<T>	Takes T, returns nothing
+Supplier<T>	Takes nothing, returns T
+
+🔸 Example:
+```
+import java.util.function.*;
+
+public class FunctionalInterfaceDemo {
+    public static void main(String[] args) {
+        Predicate<String> isLong = s -> s.length() > 5;
+        System.out.println(isLong.test("Hello")); // false
+
+        Function<Integer, Integer> square = x -> x * x;
+        System.out.println(square.apply(4)); // 16
+
+        Consumer<String> printer = s -> System.out.println(s.toUpperCase());
+        printer.accept("java");
+
+        Supplier<Double> randomSupplier = () -> Math.random();
+        System.out.println(randomSupplier.get());
+    }
+}
+```
+
+
+## ✅ 46. Multithreading in Java
+🔸 Description:
+Multithreading allows concurrent execution of two or more parts of a program for better performance and resource utilization.
+
+Each part runs as an independent thread in a single process.
+
+🔸 Benefits:
+Faster execution on multi-core systems
+
+Efficient CPU usage
+
+Useful in games, servers, UIs, etc.
+
+🔸 Example:
+```
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Thread running: " + Thread.currentThread().getName());
+    }
+}
+
+public class MultiThreadDemo {
+    public static void main(String[] args) {
+        MyThread t1 = new MyThread();
+        t1.start();
+
+        new Thread(() -> System.out.println("Lambda Thread")).start();
+    }
+}
+```
+
+
+## ✅ 47. Thread Life Cycle
+🔸 Description:
+Java threads go through the following states:
+
+New → created using new Thread()
+
+Runnable → after start()
+
+Running → selected by the scheduler
+
+Blocked/Waiting → waiting for a lock/resource
+
+Terminated → after run() completes or exception occurs
+
+🔸 Example:
+```
+class MyTask implements Runnable {
+    public void run() {
+        System.out.println("Running thread...");
+    }
+}
+
+public class ThreadLifecycle {
+    public static void main(String[] args) {
+        Thread t = new Thread(new MyTask());
+        System.out.println(t.getState()); // NEW
+        t.start();
+        System.out.println(t.getState()); // RUNNABLE
+    }
+}
+```
+
+## ✅ 48. Thread Class vs Runnable Interface
+🔸 Description:
+Feature	Thread class	Runnable interface
+Inheritance	Extends Thread (single inheritance)	Can implement Runnable + extend other class
+Design	Tightly coupled	Loosely coupled (recommended)
+Reusability	Less reusable	More reusable
+
+🔸 Example:
+```
+// Using Thread class
+class MyThread extends Thread {
+    public void run() {
+        System.out.println("Thread using Thread class");
+    }
+}
+
+// Using Runnable interface
+class MyRunnable implements Runnable {
+    public void run() {
+        System.out.println("Thread using Runnable");
+    }
+}
+
+public class ThreadVsRunnable {
+    public static void main(String[] args) {
+        new MyThread().start();
+
+        Thread t = new Thread(new MyRunnable());
+        t.start();
+    }
+}
+```
+
+
+## ✅ 49. Daemon Thread
+🔸 Description:
+A Daemon thread is a background service thread that runs until all user threads finish.
+
+Common in GC, background cleanup, monitoring, etc.
+
+Set with setDaemon(true) before starting the thread.
+
+🔸 Example:
+```
+public class DaemonExample {
+    public static void main(String[] args) {
+        Thread t = new Thread(() -> {
+            while (true)
+                System.out.println("Daemon thread running...");
+        });
+
+        t.setDaemon(true);
+        t.start();
+
+        System.out.println("Main thread ending...");
+    }
+}
+```
+The daemon thread will stop automatically once the main thread ends.
+
+
+
+## ✅ 50. sleep() vs wait()
+Feature	sleep()	wait()
+Defined in	Thread class	Object class
+Lock released?	❌ No	✅ Yes
+Use case	Pause thread for fixed time	Coordination between threads
+Throws	InterruptedException	InterruptedException
+Must be called in synchronized block?	❌ No	✅ Yes
+
+🔸 Example:
+```
+public class SleepWaitDemo {
+    public static void main(String[] args) throws InterruptedException {
+        Object lock = new Object();
+
+        // sleep() example
+        Thread.sleep(1000); // pause for 1 sec
+
+        // wait() example
+        synchronized (lock) {
+            lock.wait(1000); // releases lock and waits
+        }
+    }
+}
+```
+
+
+## ✅ 51. join() and yield() Methods
+🔸 join():
+Waits for a thread to finish execution before the next continues.
+
+🔸 yield():
+Suggests the scheduler to let another thread of same priority execute.
+
+Does not release the lock.
+
+🔸 Example:
+```
+class JoinYieldDemo {
+    public static void main(String[] args) throws InterruptedException {
+        Thread t1 = new Thread(() -> {
+            System.out.println("Thread t1 running");
+        });
+
+        Thread t2 = new Thread(() -> {
+            System.out.println("Thread t2 started");
+            Thread.yield(); // Hints to scheduler
+            System.out.println("Thread t2 finished");
+        });
+
+        t1.start();
+        t1.join(); // wait for t1 to complete
+
+        t2.start();
+    }
+}
+```
+
+
+## ✅ 52. Synchronization
+🔸 Description:
+Synchronization is used to control access to shared resources in a multi-threaded environment and prevent race conditions.
+
+🔸 Types:
+Synchronized method
+
+Synchronized block
+
+🔸 Example:
+```
+class Counter {
+    private int count = 0;
+
+    public synchronized void increment() {
+        count++;
+    }
+
+    public int getCount() {
+        return count;
+    }
+}
+
+public class SyncDemo {
+    public static void main(String[] args) throws InterruptedException {
+        Counter counter = new Counter();
+
+        Thread t1 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) counter.increment();
+        });
+
+        Thread t2 = new Thread(() -> {
+            for (int i = 0; i < 1000; i++) counter.increment();
+        });
+
+        t1.start(); t2.start();
+        t1.join(); t2.join();
+
+        System.out.println("Count: " + counter.getCount()); // 2000
+    }
+}
+```
+
+
+## ✅ 54. Deadlock in Java
+🔸 Description:
+A deadlock occurs when two or more threads wait forever for each other to release locks, causing program to hang.
+
+🔸 Example:
+```
+public class DeadlockDemo {
+    static final Object Lock1 = "Lock1";
+    static final Object Lock2 = "Lock2";
+
+    public static void main(String[] args) {
+        Thread t1 = new Thread(() -> {
+            synchronized (Lock1) {
+                System.out.println("Thread 1: Holding Lock1...");
+                try { Thread.sleep(100); } catch (Exception e) {}
+                synchronized (Lock2) {
+                    System.out.println("Thread 1: Acquired Lock2");
+                }
+            }
+        });
+
+        Thread t2 = new Thread(() -> {
+            synchronized (Lock2) {
+                System.out.println("Thread 2: Holding Lock2...");
+                try { Thread.sleep(100); } catch (Exception e) {}
+                synchronized (Lock1) {
+                    System.out.println("Thread 2: Acquired Lock1");
+                }
+            }
+        });
+
+        t1.start();
+        t2.start();
+    }
+}
+```
+❗ This example will hang because t1 waits for Lock2, t2 waits for Lock1.
+
+
+
+## ✅ 55. Thread Pool (ExecutorService)
+🔸 Description:
+Thread pools manage multiple threads efficiently, especially when you need to execute many short-lived tasks.
+
+Java provides ExecutorService for this purpose.
+
+🔸 Benefits:
+Reuses threads
+
+Reduces overhead
+
+Scales better under load
+
+🔸 Example:
+```
+import java.util.concurrent.*;
+
+public class ThreadPoolExample {
+    public static void main(String[] args) {
+        ExecutorService executor = Executors.newFixedThreadPool(3);
+
+        Runnable task = () -> {
+            System.out.println("Executing: " + Thread.currentThread().getName());
+        };
+
+        for (int i = 0; i < 5; i++) {
+            executor.submit(task);
+        }
+
+        executor.shutdown(); // Required to exit program
+    }
+}
+```
+
+
+## ✅ 56. Callable vs Runnable
+Feature	Runnable	Callable<V>
+Return value	❌ No return	✅ Returns result (V)
+Throws Exception?	❌ Cannot throw checked exceptions	✅ Can throw checked exceptions
+Used With	Thread, ExecutorService	ExecutorService, Future
+Introduced in	Java 1.0	Java 5
+
+🔸 Example:
+```
+import java.util.concurrent.*;
+
+public class CallableDemo {
+    public static void main(String[] args) throws Exception {
+        ExecutorService executor = Executors.newSingleThreadExecutor();
+
+        Callable<Integer> task = () -> {
+            return 10 + 20;
+        };
+
+        Future<Integer> future = executor.submit(task);
+        System.out.println("Result: " + future.get()); // 30
+
+        executor.shutdown();
+    }
+}
+```
+
+
+## ✅ 57. Future & CompletableFuture
+🔸 Future:
+Represents the result of an async computation.
+You get result using .get() which blocks until task completes.
+
+🔸 CompletableFuture (Java 8+):
+Advanced alternative to Future:
+
+Non-blocking
+
+Callback support
+
+Chaining using thenApply(), thenAccept(), etc.
+
+🔸 Example:
+```
+import java.util.concurrent.*;
+
+public class FutureVsCompletableFuture {
+    public static void main(String[] args) throws Exception {
+        // Future
+        ExecutorService ex = Executors.newSingleThreadExecutor();
+        Future<String> future = ex.submit(() -> "Hello from Future");
+        System.out.println(future.get()); // blocking
+        ex.shutdown();
+
+        // CompletableFuture
+        CompletableFuture.supplyAsync(() -> "Hello from CompletableFuture")
+                         .thenApply(str -> str.toUpperCase())
+                         .thenAccept(System.out::println); // non-blocking
+    }
+}
+```
+
+
+## ✅ 58. Collections vs Arrays
+Feature	Arrays	Collections (List, Set, etc.)
+Size	Fixed	Dynamic
+Type	Primitive or Objects	Objects only
+Utility	Simple, fast	Rich API, more flexible
+Performance	Slightly faster	Slightly heavier but convenient
+
+🔸 Example:
+```
+// Array
+int[] nums = {1, 2, 3};
+
+// Collection
+List<Integer> list = new ArrayList<>();
+list.add(1); list.add(2);
+```
+
+
+## ✅ 59. Collection vs Collections Class
+Feature	Collection (interface)	Collections (utility class)
+What is it?	Root interface of Java Collections API	Final class with static helper methods
+Package	java.util	java.util
+Usage	Implemented by List, Set, etc.	Utility methods like sort(), reverse()
+
+🔸 Example:
+```
+import java.util.*;
+
+public class CollectionVsCollections {
+    public static void main(String[] args) {
+        Collection<String> col = new ArrayList<>();
+        col.add("Java");
+
+        List<String> list = new ArrayList<>(List.of("B", "A", "C"));
+        Collections.sort(list); // sort using Collections class
+        System.out.println(list); // [A, B, C]
+    }
+}
+```
+#   c o r e _ j a v a _ w i t h _ c o d e  
+ "# core_java_with_code" 
